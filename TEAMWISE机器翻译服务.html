@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="copyright" content="(C) Copyright 2005" />
+	  <meta name="DC.rights.owner" content="(C) Copyright 2005" />
+	  <meta name="DC.Type" content="concept" />
+	  <meta name="DC.Title" content="STE" />
+	  <meta name="abstract" content="You can use anonymous call to block your identity and phone number from appearing to the called party when you call someone. For example, you want to call to consult some of the services, but don’t want to be harassed. Anonymous callis configurable on a per-line basis. You can also configure the phone to send anonymous call on/off code to the server to activate/deactivate anonymous call on the server side." /><meta name="description" content="You can use anonymous call to block your identity and phone number from appearing to the called party when you call someone. For example, you want to call to consult some of the services, but don’t want to be harassed. Anonymous callis configurable on a per-line basis. You can also configure the phone to send anonymous call on/off code to the server to activate/deactivate anonymous call on the server side." /><meta name="DC.Relation" scheme="URI" content="../concepts/YealinkT4Series_basic_callfeatures.html" /><meta name="DC.Relation" scheme="URI" content="../tasks/YealinkT4Series_configuring_the_anonymous_call.html" /><meta name="DC.Relation" scheme="URI" content="../tasks/YealinkT4Series_placing_an_anonymous_call.html" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="A7814244-3654F1A-871635A7F1E5259-75FAAB" /><div id="A7814244-3654F1A-871635A7F1E5259-75FAAB"></div><meta name="DC.Language" content="en-us" />
+	  <title>TEAMWISE 机器翻译服务</title>
+	  <!--  Generated with dksgen version 19.0, build number 2017042020.  -->
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <meta name="wh-path2root" content="../index.html" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    </script>
+
+    <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
+    <script>
+
+        function tran() {
+            var content = $('#exampleInputEmail1').val();
+            var appid = 'b0869af9c84a7b65a9cf73c918d07d72';
+            var time = new Date().getTime();
+            var sign = md5(time + appid);
+   
+                $.post("http://106.13.130.58:9999/openapi/tran",
+                    {
+                        query: content,
+                        timeStamp: time,
+                        sign: sign
+                    },
+                    function (data, status) {
+                        document.getElementById('dst').innerHTML = '<span style="color:blue;">结果：</span>' + data.data.dst;
+                        document.getElementById('summary').innerHTML = '<span style="color:blue;">摘要：</span>' + data.data.summary;
+
+                    });
+        }
+    </script>
+    <style>
+        body {
+            padding: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1" style="color:blue;">原文（一次翻译5000字符）</label>
+        <textarea type="email" class="form-control" id="exampleInputEmail1"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default" onclick="tran()">翻译</button>
+    <div id="dst" style="margin: 20px 0 20px 0;">
+        
+    </div>
+
+    <div id="summary" style="margin: 20px 0 20px 0;">
+
+    </div>
+</body>
+
+</html>
